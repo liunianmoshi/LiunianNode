@@ -1,0 +1,63 @@
+﻿<style>
+    .select a {
+        width: 100px;
+    }
+
+    .comboxop {
+        width: 100px;
+    }
+</style>
+
+<div class="pageContent">
+    <form method="post" action="/sysmenu/save" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+        <input type="hidden" name="ID" value="<%= model.ID ?model.ID:0 %>" />
+        <input type="hidden" name="State" value="<%= model.State ?model.State:0 %>" />
+        <input type="hidden" name="MenuLevel" value="<%= model.MenuLevel ?model.MenuLevel:'' %>" />
+        <div class="pageFormContent" layouth="56">
+            <p>
+                <label>权限大类：</label>
+                <%-dropMenuList(selectList,model.ParentId) %>
+            </p>
+            <p>
+                <label>菜单名称：</label>
+                <input type="text" name="MenuName" value="<%= model.MenuName ?model.MenuName:'' %>" class="required textInput" />
+            </p>
+            <p>
+                <label>菜单Controller：</label>
+                <input type="text" name="Controller" value="<%= model.Controller ?model.Controller:'' %>" class="required textInput" />
+            </p>
+            <p>
+                <label>菜单Action：</label>
+                <input type="text" name="Action" value="<%= model.Action ?model.Action:'' %>" class="textInput" />
+            </p>
+            <p>
+                <label>是否是视图：</label>
+                <input  name="IsView" value="1" type="checkbox" <%- model && model.IsView==1?'checked=checked':'' %>>
+            </p>
+            <p>
+                <label>
+                    排序号：
+                </label>
+                <input type="text" name="OrderNum"  value="<%= model ?model.OrderNum:'' %>" class="required textInput" />
+            </p>
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                <li>
+                    <div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+<script>
+    function changeSelect() {
+        var l = $("select[name='ParentId']").find("option:selected").attr("data");
+        var value = 1 + parseInt(l);
+        $("input[name='MenuLevel']").val(value);
+    }
+    $(function () {
+        changeSelect();
+    })
+</script>

@@ -1,0 +1,36 @@
+﻿<form id="pagerForm" method="post" action="/role/index" )">
+    <input type="hidden" name="pageNum" value="1" />
+    <input type="hidden" name="numPerPage" value="<%- page.pageSize %>" />
+</form>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+            <li><a class="add" href="/role/edit" target="dialog" mask="true"><span>添加</span></a></li>
+            <li><a class="edit" href="/role/edit?id={ID}" target="dialog" mask="true"><span>修改</span></a></li>
+            <li><a class="delete" href="/role/delete?id={ID}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
+            <li><a class="add" href="/role/setauthor?id={ID}" target="dialog" width="800" height="500" mask="true"><span>设置权限</span></a></li>
+            <li class="line">line</li>
+        </ul>
+    </div>
+    <table class="table" width="100%" layouth="76">
+        <thead>
+            <tr>
+                <th width="120" align="center">角色名称</th>
+                <th width="120" align="center">角色状态</th>
+                <th width="80" align="center">更新时间</th>
+                <th width="80" align="center">创建时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i<data.length; i++) { %>
+                <tr target="ID" rel="<%= data[i].ID %>">
+                    <td><%= data[i].RoleName %></td>
+                    <td><%= data[i].RoleState ? "启用" : "禁用" %></td>
+                    <td><%= formatTime(data[i].UpdateTime,"YYYY-MM-DD HH:mm:ss") %></td>
+                    <td><%= formatTime(data[i].CreateTime,"YYYY-MM-DD HH:mm:ss") %></td>
+                </tr>
+            <% } %>
+</tbody>
+    </table>
+    <%- page.renderPage() %>
+</div>

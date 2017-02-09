@@ -1,0 +1,752 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>LiunianNode</Name>
+    <RootNamespace>LiunianNode</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>af7a1218-8687-444c-8342-963b698f2f1b</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>app.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <NodejsPort>1337</NodejsPort>
+    <StartWebBrowser>true</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app.js" />
+    <Compile Include="common\dbContext.js" />
+    <Compile Include="model\roleauthor.js" />
+    <Compile Include="public\common.js" />
+    <Compile Include="common\pagedList.js" />
+    <Compile Include="common\returnResult.js" />
+    <Compile Include="common\viewhelper.js" />
+    <Compile Include="config\config.js" />
+    <Compile Include="controller\base.js" />
+    <Compile Include="controller\index.js" />
+    <Compile Include="controller\role.js" />
+    <Compile Include="controller\sysmenu.js" />
+    <Compile Include="model\role.js" />
+    <Compile Include="model\sysmenu.js" />
+    <Compile Include="public\dwz\dwz.min.js" />
+    <Compile Include="public\dwz\js\dwz.regional.zh.js" />
+    <Compile Include="public\dwz\js\jquery-1.7.2.js" />
+    <Compile Include="public\dwz\js\jquery-1.7.2.min.js" />
+    <Compile Include="public\dwz\js\jquery-1.8.2.min.js" />
+    <Compile Include="public\dwz\js\jquery.bgiframe.js" />
+    <Compile Include="public\dwz\js\jquery.cookie.js" />
+    <Compile Include="public\dwz\js\jquery.easing.1.3.js" />
+    <Compile Include="public\dwz\js\jquery.validate.js" />
+    <Compile Include="public\dwz\js\jquery.validate.min.js" />
+    <Compile Include="public\dwz\js\speedup.js" />
+    <Compile Include="public\dwz\uploadify\scripts\jquery.uploadify.js" />
+    <Compile Include="public\dwz\uploadify\scripts\jquery.uploadify.min.js" />
+    <Compile Include="public\dwz\xheditor\xheditor-1.2.1.min.js" />
+    <Compile Include="public\dwz\xheditor\xheditor_lang\en.js" />
+    <Compile Include="public\dwz\xheditor\xheditor_lang\zh-cn.js" />
+    <Compile Include="public\dwz\xheditor\xheditor_lang\zh-tw.js" />
+    <Compile Include="public\dwz\xheditor\xheditor_plugins\html2markdown.js" />
+    <Compile Include="public\dwz\xheditor\xheditor_plugins\htmldomparser.js" />
+    <Compile Include="public\dwz\xheditor\xheditor_plugins\multiupload\multiupload.js" />
+    <Compile Include="public\dwz\xheditor\xheditor_plugins\multiupload\swfupload\swfupload.js" />
+    <Compile Include="public\dwz\xheditor\xheditor_plugins\showdown.js" />
+    <Compile Include="public\dwz\xheditor\xheditor_plugins\ubb.js" />
+    <Compile Include="public\jquery-1.10.2.min.js" />
+    <Compile Include="public\moment.js" />
+    <Compile Include="config\route.js" />
+    <Content Include="package.json" />
+    <Content Include="public\dwz\dwz.frag.xml" />
+    <Content Include="public\dwz\themes\azure\images\accordion\accordion.png" />
+    <Content Include="public\dwz\themes\azure\images\account_info_bg.png" />
+    <Content Include="public\dwz\themes\azure\images\alert\alertpanel.png" />
+    <Content Include="public\dwz\themes\azure\images\alert\alertpanel_icon.png" />
+    <Content Include="public\dwz\themes\azure\images\button\button_s.png" />
+    <Content Include="public\dwz\themes\azure\images\button\imgX.gif" />
+    <Content Include="public\dwz\themes\azure\images\button\imgX.png" />
+    <Content Include="public\dwz\themes\azure\images\dialog\dialogpanel.png" />
+    <Content Include="public\dwz\themes\azure\images\dialog\dialogpanel_icon.png" />
+    <Content Include="public\dwz\themes\azure\images\form\input_bg.png" />
+    <Content Include="public\dwz\themes\azure\images\form\input_bt.png" />
+    <Content Include="public\dwz\themes\azure\images\grid\grid.png" />
+    <Content Include="public\dwz\themes\azure\images\grid\resizeCol.png" />
+    <Content Include="public\dwz\themes\azure\images\grid\tableth.png" />
+    <Content Include="public\dwz\themes\azure\images\header_bg.png" />
+    <Content Include="public\dwz\themes\azure\images\icon.png" />
+    <Content Include="public\dwz\themes\azure\images\layout\taskbar.png" />
+    <Content Include="public\dwz\themes\azure\images\layout\taskbar_control.png" />
+    <Content Include="public\dwz\themes\azure\images\layout\taskbar_icon.png" />
+    <Content Include="public\dwz\themes\azure\images\layout\toggleSidebar.png" />
+    <Content Include="public\dwz\themes\azure\images\listLine.png" />
+    <Content Include="public\dwz\themes\azure\images\menu\menu.png" />
+    <Content Include="public\dwz\themes\azure\images\order_down.gif" />
+    <Content Include="public\dwz\themes\azure\images\order_up.gif" />
+    <Content Include="public\dwz\themes\azure\images\pageHeader_bg.png" />
+    <Content Include="public\dwz\themes\azure\images\panel\panel.png" />
+    <Content Include="public\dwz\themes\azure\images\panel\panel_icon.png" />
+    <Content Include="public\dwz\themes\azure\images\preview.png" />
+    <Content Include="public\dwz\themes\azure\images\progressBar\progressBar_l.gif" />
+    <Content Include="public\dwz\themes\azure\images\progressBar\progressBar_m.gif" />
+    <Content Include="public\dwz\themes\azure\images\progressBar\progressBar_s.gif" />
+    <Content Include="public\dwz\themes\azure\images\search-bg.gif" />
+    <Content Include="public\dwz\themes\azure\images\search-bt.gif" />
+    <Content Include="public\dwz\themes\azure\images\shadow\shadow_c_c.png" />
+    <Content Include="public\dwz\themes\azure\images\shadow\shadow_c_l.png" />
+    <Content Include="public\dwz\themes\azure\images\shadow\shadow_c_r.png" />
+    <Content Include="public\dwz\themes\azure\images\shadow\shadow_f_c.png" />
+    <Content Include="public\dwz\themes\azure\images\shadow\shadow_f_l.png" />
+    <Content Include="public\dwz\themes\azure\images\shadow\shadow_f_r.png" />
+    <Content Include="public\dwz\themes\azure\images\shadow\shadow_h_c.png" />
+    <Content Include="public\dwz\themes\azure\images\shadow\shadow_h_l.png" />
+    <Content Include="public\dwz\themes\azure\images\shadow\shadow_h_r.png" />
+    <Content Include="public\dwz\themes\azure\images\tabs\tabscontrol.png" />
+    <Content Include="public\dwz\themes\azure\images\tabs\tabspage.png" />
+    <Content Include="public\dwz\themes\azure\images\tabs\tabspage_icon.png" />
+    <Content Include="public\dwz\themes\azure\images\tabs\tabspanel.png" />
+    <Content Include="public\dwz\themes\azure\images\tree\check.png" />
+    <Content Include="public\dwz\themes\azure\images\tree\folder.png" />
+    <Content Include="public\dwz\themes\azure\images\tree\tree.png" />
+    <Content Include="public\dwz\themes\azure\style.css" />
+    <Content Include="public\dwz\themes\css\core.css" />
+    <Content Include="public\dwz\themes\css\ieHack.css" />
+    <Content Include="public\dwz\themes\css\login.css" />
+    <Content Include="public\dwz\themes\css\print.css" />
+    <Content Include="public\dwz\themes\default\images\accordion\accordion.png" />
+    <Content Include="public\dwz\themes\default\images\account_info_bg.png" />
+    <Content Include="public\dwz\themes\default\images\alert\alertpanel.png" />
+    <Content Include="public\dwz\themes\default\images\alert\alertpanel_icon.png" />
+    <Content Include="public\dwz\themes\default\images\button\button_s.png" />
+    <Content Include="public\dwz\themes\default\images\button\imgX.gif" />
+    <Content Include="public\dwz\themes\default\images\button\toleft.gif" />
+    <Content Include="public\dwz\themes\default\images\button\toleftone.gif" />
+    <Content Include="public\dwz\themes\default\images\button\toright.gif" />
+    <Content Include="public\dwz\themes\default\images\button\torightone.gif" />
+    <Content Include="public\dwz\themes\default\images\dialog\dialogpanel.png" />
+    <Content Include="public\dwz\themes\default\images\dialog\dialogpanel_icon.png" />
+    <Content Include="public\dwz\themes\default\images\form\input_bg.png" />
+    <Content Include="public\dwz\themes\default\images\form\input_bt.png" />
+    <Content Include="public\dwz\themes\default\images\grid\grid.png" />
+    <Content Include="public\dwz\themes\default\images\grid\resizeCol.png" />
+    <Content Include="public\dwz\themes\default\images\grid\tableth.png" />
+    <Content Include="public\dwz\themes\default\images\header_bg.png" />
+    <Content Include="public\dwz\themes\default\images\icon.png" />
+    <Content Include="public\dwz\themes\default\images\layout\taskbar.png" />
+    <Content Include="public\dwz\themes\default\images\layout\taskbar_control.png" />
+    <Content Include="public\dwz\themes\default\images\layout\taskbar_icon.png" />
+    <Content Include="public\dwz\themes\default\images\layout\toggleSidebar.png" />
+    <Content Include="public\dwz\themes\default\images\listLine.png" />
+    <Content Include="public\dwz\themes\default\images\login_banner.jpg" />
+    <Content Include="public\dwz\themes\default\images\login_bg.png" />
+    <Content Include="public\dwz\themes\default\images\login_content_bg.png" />
+    <Content Include="public\dwz\themes\default\images\login_header_bg.png" />
+    <Content Include="public\dwz\themes\default\images\login_list.png" />
+    <Content Include="public\dwz\themes\default\images\login_logo.gif" />
+    <Content Include="public\dwz\themes\default\images\login_sub.png" />
+    <Content Include="public\dwz\themes\default\images\login_title.png" />
+    <Content Include="public\dwz\themes\default\images\logo - 副本.png" />
+    <Content Include="public\dwz\themes\default\images\logo.png" />
+    <Content Include="public\dwz\themes\default\images\menu\menu.png" />
+    <Content Include="public\dwz\themes\default\images\order_down.gif" />
+    <Content Include="public\dwz\themes\default\images\order_up.gif" />
+    <Content Include="public\dwz\themes\default\images\pageHeader_bg.png" />
+    <Content Include="public\dwz\themes\default\images\panel\panel.png" />
+    <Content Include="public\dwz\themes\default\images\panel\panel_icon.png" />
+    <Content Include="public\dwz\themes\default\images\progressBar\progressBar_l.gif" />
+    <Content Include="public\dwz\themes\default\images\progressBar\progressBar_m.gif" />
+    <Content Include="public\dwz\themes\default\images\progressBar\progressBar_s.gif" />
+    <Content Include="public\dwz\themes\default\images\search-bg.gif" />
+    <Content Include="public\dwz\themes\default\images\search-bt.gif" />
+    <Content Include="public\dwz\themes\default\images\shadow\shadow_c_c.png" />
+    <Content Include="public\dwz\themes\default\images\shadow\shadow_c_l.png" />
+    <Content Include="public\dwz\themes\default\images\shadow\shadow_c_r.png" />
+    <Content Include="public\dwz\themes\default\images\shadow\shadow_f_c.png" />
+    <Content Include="public\dwz\themes\default\images\shadow\shadow_f_l.png" />
+    <Content Include="public\dwz\themes\default\images\shadow\shadow_f_r.png" />
+    <Content Include="public\dwz\themes\default\images\shadow\shadow_h_c.png" />
+    <Content Include="public\dwz\themes\default\images\shadow\shadow_h_l.png" />
+    <Content Include="public\dwz\themes\default\images\shadow\shadow_h_r.png" />
+    <Content Include="public\dwz\themes\default\images\tabs\tabscontrol.png" />
+    <Content Include="public\dwz\themes\default\images\tabs\tabspage.png" />
+    <Content Include="public\dwz\themes\default\images\tabs\tabspage_icon.png" />
+    <Content Include="public\dwz\themes\default\images\tabs\tabspanel.png" />
+    <Content Include="public\dwz\themes\default\images\themeButton.png" />
+    <Content Include="public\dwz\themes\default\images\tree\check.png" />
+    <Content Include="public\dwz\themes\default\images\tree\folder.png" />
+    <Content Include="public\dwz\themes\default\images\tree\tree.png" />
+    <Content Include="public\dwz\themes\default\style.css" />
+    <Content Include="public\dwz\themes\green\images\accordion\accordion.png" />
+    <Content Include="public\dwz\themes\green\images\account_info_bg.png" />
+    <Content Include="public\dwz\themes\green\images\alert\alertpanel.png" />
+    <Content Include="public\dwz\themes\green\images\alert\alertpanel_icon.png" />
+    <Content Include="public\dwz\themes\green\images\button\button_s.png" />
+    <Content Include="public\dwz\themes\green\images\button\imgX.gif" />
+    <Content Include="public\dwz\themes\green\images\dialog\dialogpanel.png" />
+    <Content Include="public\dwz\themes\green\images\dialog\dialogpanel_icon.png" />
+    <Content Include="public\dwz\themes\green\images\form\input_bg.png" />
+    <Content Include="public\dwz\themes\green\images\form\input_bt.png" />
+    <Content Include="public\dwz\themes\green\images\grid\grid.png" />
+    <Content Include="public\dwz\themes\green\images\grid\resizeCol.png" />
+    <Content Include="public\dwz\themes\green\images\grid\tableth.png" />
+    <Content Include="public\dwz\themes\green\images\header_bg.png" />
+    <Content Include="public\dwz\themes\green\images\layout\toggleSidebar.png" />
+    <Content Include="public\dwz\themes\green\images\listLine.png" />
+    <Content Include="public\dwz\themes\green\images\logo.png" />
+    <Content Include="public\dwz\themes\green\images\pageHeader_bg.png" />
+    <Content Include="public\dwz\themes\green\images\panel\panel.png" />
+    <Content Include="public\dwz\themes\green\images\panel\panel_icon.png" />
+    <Content Include="public\dwz\themes\green\images\tabs\tabscontrol.png" />
+    <Content Include="public\dwz\themes\green\images\tabs\tabspage.png" />
+    <Content Include="public\dwz\themes\green\images\tabs\tabspage_icon.png" />
+    <Content Include="public\dwz\themes\green\images\tabs\tabspanel.png" />
+    <Content Include="public\dwz\themes\green\images\tree\tree.png" />
+    <Content Include="public\dwz\themes\green\style.css" />
+    <Content Include="public\dwz\themes\purple\images\accordion\accordion.png" />
+    <Content Include="public\dwz\themes\purple\images\account_info_bg.png" />
+    <Content Include="public\dwz\themes\purple\images\alert\alertpanel.png" />
+    <Content Include="public\dwz\themes\purple\images\alert\alertpanel_icon.png" />
+    <Content Include="public\dwz\themes\purple\images\button\button_s.png" />
+    <Content Include="public\dwz\themes\purple\images\button\imgX.gif" />
+    <Content Include="public\dwz\themes\purple\images\dialog\dialogpanel.png" />
+    <Content Include="public\dwz\themes\purple\images\dialog\dialogpanel_icon.png" />
+    <Content Include="public\dwz\themes\purple\images\form\input_bg.png" />
+    <Content Include="public\dwz\themes\purple\images\form\input_bt.png" />
+    <Content Include="public\dwz\themes\purple\images\grid\grid.png" />
+    <Content Include="public\dwz\themes\purple\images\grid\resizeCol.png" />
+    <Content Include="public\dwz\themes\purple\images\grid\tableth.png" />
+    <Content Include="public\dwz\themes\purple\images\header_bg.png" />
+    <Content Include="public\dwz\themes\purple\images\layout\taskbar.png" />
+    <Content Include="public\dwz\themes\purple\images\layout\taskbar_control.png" />
+    <Content Include="public\dwz\themes\purple\images\layout\taskbar_icon.png" />
+    <Content Include="public\dwz\themes\purple\images\layout\toggleSidebar.png" />
+    <Content Include="public\dwz\themes\purple\images\login_bg.png" />
+    <Content Include="public\dwz\themes\purple\images\login_content_bg.png" />
+    <Content Include="public\dwz\themes\purple\images\login_header_bg.png" />
+    <Content Include="public\dwz\themes\purple\images\login_list.png" />
+    <Content Include="public\dwz\themes\purple\images\menu\menu.png" />
+    <Content Include="public\dwz\themes\purple\images\pageHeader_bg.png" />
+    <Content Include="public\dwz\themes\purple\images\panel\panel.png" />
+    <Content Include="public\dwz\themes\purple\images\panel\panel_icon.png" />
+    <Content Include="public\dwz\themes\purple\images\progressBar\progressBar_l.gif" />
+    <Content Include="public\dwz\themes\purple\images\progressBar\progressBar_m.gif" />
+    <Content Include="public\dwz\themes\purple\images\progressBar\progressBar_s.gif" />
+    <Content Include="public\dwz\themes\purple\images\shadow\shadow_c_c.png" />
+    <Content Include="public\dwz\themes\purple\images\shadow\shadow_c_l.png" />
+    <Content Include="public\dwz\themes\purple\images\shadow\shadow_c_r.png" />
+    <Content Include="public\dwz\themes\purple\images\shadow\shadow_f_c.png" />
+    <Content Include="public\dwz\themes\purple\images\shadow\shadow_f_l.png" />
+    <Content Include="public\dwz\themes\purple\images\shadow\shadow_f_r.png" />
+    <Content Include="public\dwz\themes\purple\images\shadow\shadow_h_c.png" />
+    <Content Include="public\dwz\themes\purple\images\shadow\shadow_h_l.png" />
+    <Content Include="public\dwz\themes\purple\images\shadow\shadow_h_r.png" />
+    <Content Include="public\dwz\themes\purple\images\tabs\tabscontrol.png" />
+    <Content Include="public\dwz\themes\purple\images\tabs\tabspage.png" />
+    <Content Include="public\dwz\themes\purple\images\tabs\tabspage_icon.png" />
+    <Content Include="public\dwz\themes\purple\images\tabs\tabspanel.png" />
+    <Content Include="public\dwz\themes\purple\images\tree\check.png" />
+    <Content Include="public\dwz\themes\purple\images\tree\folder.png" />
+    <Content Include="public\dwz\themes\purple\images\tree\tree.png" />
+    <Content Include="public\dwz\themes\purple\style.css" />
+    <Content Include="public\dwz\themes\silver\images\accordion\accordion.png" />
+    <Content Include="public\dwz\themes\silver\images\account_info_bg.png" />
+    <Content Include="public\dwz\themes\silver\images\alert\alertpanel.png" />
+    <Content Include="public\dwz\themes\silver\images\alert\alertpanel_icon.png" />
+    <Content Include="public\dwz\themes\silver\images\button\button_s.png" />
+    <Content Include="public\dwz\themes\silver\images\button\imgX.gif" />
+    <Content Include="public\dwz\themes\silver\images\dialog\dialogpanel.png" />
+    <Content Include="public\dwz\themes\silver\images\dialog\dialogpanel_icon.png" />
+    <Content Include="public\dwz\themes\silver\images\form\input_bg.png" />
+    <Content Include="public\dwz\themes\silver\images\form\input_bt.png" />
+    <Content Include="public\dwz\themes\silver\images\grid\grid.png" />
+    <Content Include="public\dwz\themes\silver\images\grid\resizeCol.png" />
+    <Content Include="public\dwz\themes\silver\images\grid\tableth.png" />
+    <Content Include="public\dwz\themes\silver\images\header_bg.png" />
+    <Content Include="public\dwz\themes\silver\images\layout\taskbar.png" />
+    <Content Include="public\dwz\themes\silver\images\layout\taskbar_control.png" />
+    <Content Include="public\dwz\themes\silver\images\layout\taskbar_icon.png" />
+    <Content Include="public\dwz\themes\silver\images\layout\toggleSidebar.png" />
+    <Content Include="public\dwz\themes\silver\images\listLine.png" />
+    <Content Include="public\dwz\themes\silver\images\menu\menu.png" />
+    <Content Include="public\dwz\themes\silver\images\pageHeader_bg.png" />
+    <Content Include="public\dwz\themes\silver\images\panel\panel.png" />
+    <Content Include="public\dwz\themes\silver\images\panel\panel_icon.png" />
+    <Content Include="public\dwz\themes\silver\images\progressBar\progressBar_l.gif" />
+    <Content Include="public\dwz\themes\silver\images\progressBar\progressBar_m.gif" />
+    <Content Include="public\dwz\themes\silver\images\progressBar\progressBar_s.gif" />
+    <Content Include="public\dwz\themes\silver\images\shadow\shadow_c_c.png" />
+    <Content Include="public\dwz\themes\silver\images\shadow\shadow_c_l.png" />
+    <Content Include="public\dwz\themes\silver\images\shadow\shadow_c_r.png" />
+    <Content Include="public\dwz\themes\silver\images\shadow\shadow_f_c.png" />
+    <Content Include="public\dwz\themes\silver\images\shadow\shadow_f_l.png" />
+    <Content Include="public\dwz\themes\silver\images\shadow\shadow_f_r.png" />
+    <Content Include="public\dwz\themes\silver\images\shadow\shadow_h_c.png" />
+    <Content Include="public\dwz\themes\silver\images\shadow\shadow_h_l.png" />
+    <Content Include="public\dwz\themes\silver\images\shadow\shadow_h_r.png" />
+    <Content Include="public\dwz\themes\silver\images\tabs\tabscontrol.png" />
+    <Content Include="public\dwz\themes\silver\images\tabs\tabspage.png" />
+    <Content Include="public\dwz\themes\silver\images\tabs\tabspage_icon.png" />
+    <Content Include="public\dwz\themes\silver\images\tabs\tabspanel.png" />
+    <Content Include="public\dwz\themes\silver\images\tree\check.png" />
+    <Content Include="public\dwz\themes\silver\images\tree\folder.png" />
+    <Content Include="public\dwz\themes\silver\images\tree\tree.png" />
+    <Content Include="public\dwz\themes\silver\style.css" />
+    <Content Include="public\dwz\uploadify\Change Log.txt" />
+    <Content Include="public\dwz\uploadify\css\uploadify.css" />
+    <Content Include="public\dwz\uploadify\img\add.jpg" />
+    <Content Include="public\dwz\uploadify\img\cancel.jpg" />
+    <Content Include="public\dwz\uploadify\img\delete.jpg" />
+    <Content Include="public\dwz\uploadify\img\upload.jpg" />
+    <Content Include="public\dwz\uploadify\img\uploadify-cancel.png" />
+    <Content Include="public\dwz\uploadify\scripts\uploadify.swf" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\angry.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\awkward.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\bye.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\config.txt" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\crazy.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\cry.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\curse.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\cute.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\despise.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\doubt.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\envy.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\fastcry.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\knock.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\laugh.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\mad.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\ohmy.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\panic.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\proud.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\quiet.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\sad.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\shutup.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\shy.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\sleep.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\smile.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\struggle.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\titter.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\tongue.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\wail.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\default\wronged.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\alien.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\angel.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\angry.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\bandit.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\biglaugh.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\blink.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\blush.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\config.txt" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\cool.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\cry.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\depres.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\devil.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\glare.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\heart.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\joyful.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\kiss.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\laugh.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\magician.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\ninja.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\pinch.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\police.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\sad.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\sick.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\sideways.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\sleep.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\smile.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\surprised.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\tongue.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\unsure.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\w00t.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\whistling.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\wondering.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\ipb\wub.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\1.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\10.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\11.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\12.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\13.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\14.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\15.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\16.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\17.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\18.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\19.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\2.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\20.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\21.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\22.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\23.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\24.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\25.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\26.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\27.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\28.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\29.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\3.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\30.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\31.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\32.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\33.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\34.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\35.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\36.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\37.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\38.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\39.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\4.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\40.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\5.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\6.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\7.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\8.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\msn\9.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\angry.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\bad.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\blush.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\brokenheart.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\bye.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\coffee.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\config.txt" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\cool.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\cry.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\curse.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\cute.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\devil.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\envy.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\gift.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\good.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\kiss.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\laugh.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\love.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\music.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\question.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\rose.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\sad.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\shocked.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\shout.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\sick.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\sleepy.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\smile.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\soccer.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\sweat.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\tired.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\tongue.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\victory.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_emot\pidgin\wink.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_plugins\multiupload\img\add.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_plugins\multiupload\img\bg1.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_plugins\multiupload\img\bg2.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_plugins\multiupload\img\btnbg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_plugins\multiupload\img\btnbgr.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_plugins\multiupload\img\clear.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_plugins\multiupload\img\progressbg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_plugins\multiupload\img\start.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_plugins\multiupload\multiupload.css" />
+    <Content Include="public\dwz\xheditor\xheditor_plugins\multiupload\multiupload.html" />
+    <Content Include="public\dwz\xheditor\xheditor_plugins\multiupload\swfupload\swfupload.swf" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\blank.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\iframe.css" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\anchor.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\close.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\flash.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\icons.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\loading.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\progress.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\progressbg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\tag-address.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\tag-div.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\tag-h1.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\tag-h2.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\tag-h3.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\tag-h4.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\tag-h5.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\tag-h6.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\tag-p.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\tag-pre.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\waiting.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\wmp.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\img\wordimg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\default\ui.css" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\iframe.css" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\anchor.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\close.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\flash.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\icons.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\loading.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\progress.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\progressbg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\tag-address.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\tag-div.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\tag-h1.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\tag-h2.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\tag-h3.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\tag-h4.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\tag-h5.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\tag-h6.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\tag-p.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\tag-pre.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\waiting.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\wmp.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\img\wordimg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\nostyle\ui.css" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\iframe.css" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\anchor.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\buttonbg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\close.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\flash.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\icons.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\loading.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\progress.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\progressbg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\tag-address.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\tag-div.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\tag-h1.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\tag-h2.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\tag-h3.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\tag-h4.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\tag-h5.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\tag-h6.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\tag-p.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\tag-pre.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\waiting.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\wmp.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\wordimg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007blue\ui.css" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\iframe.css" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\anchor.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\buttonbg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\close.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\flash.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\icons.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\loading.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\progress.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\progressbg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\tag-address.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\tag-div.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\tag-h1.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\tag-h2.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\tag-h3.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\tag-h4.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\tag-h5.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\tag-h6.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\tag-p.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\tag-pre.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\waiting.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\wmp.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\wordimg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\o2007silver\ui.css" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\iframe.css" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\anchor.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\buttonbg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\close.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\flash.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\icons.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\loading.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\progress.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\progressbg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\tag-address.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\tag-div.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\tag-h1.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\tag-h2.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\tag-h3.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\tag-h4.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\tag-h5.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\tag-h6.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\tag-p.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\tag-pre.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\titlebg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\waiting.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\wmp.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\img\wordimg.gif" />
+    <Content Include="public\dwz\xheditor\xheditor_skin\vista\ui.css" />
+    <Content Include="public\images\123.png" />
+    <Content Include="README.md" />
+    <Content Include="views\home\index.html" />
+    <Content Include="views\role\edit.html" />
+    <Content Include="views\role\index.html" />
+    <Content Include="views\role\setauthor.html" />
+    <Content Include="views\sysmenu\edit.html" />
+    <Content Include="views\sysmenu\index.html" />
+    <Content Include="views\sysmenu\list.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="controller\" />
+    <Folder Include="common\" />
+    <Folder Include="config\" />
+    <Folder Include="model\" />
+    <Folder Include="public\" />
+    <Folder Include="public\dwz\" />
+    <Folder Include="public\dwz\js\" />
+    <Folder Include="public\dwz\themes\" />
+    <Folder Include="public\dwz\themes\azure\" />
+    <Folder Include="public\dwz\themes\azure\images\" />
+    <Folder Include="public\dwz\themes\azure\images\accordion\" />
+    <Folder Include="public\dwz\themes\azure\images\alert\" />
+    <Folder Include="public\dwz\themes\azure\images\button\" />
+    <Folder Include="public\dwz\themes\azure\images\dialog\" />
+    <Folder Include="public\dwz\themes\azure\images\form\" />
+    <Folder Include="public\dwz\themes\azure\images\grid\" />
+    <Folder Include="public\dwz\themes\azure\images\layout\" />
+    <Folder Include="public\dwz\themes\azure\images\menu\" />
+    <Folder Include="public\dwz\themes\azure\images\panel\" />
+    <Folder Include="public\dwz\themes\azure\images\progressBar\" />
+    <Folder Include="public\dwz\themes\azure\images\shadow\" />
+    <Folder Include="public\dwz\themes\azure\images\tabs\" />
+    <Folder Include="public\dwz\themes\azure\images\tree\" />
+    <Folder Include="public\dwz\themes\css\" />
+    <Folder Include="public\dwz\themes\default\" />
+    <Folder Include="public\dwz\themes\default\images\" />
+    <Folder Include="public\dwz\themes\default\images\accordion\" />
+    <Folder Include="public\dwz\themes\default\images\alert\" />
+    <Folder Include="public\dwz\themes\default\images\button\" />
+    <Folder Include="public\dwz\themes\default\images\dialog\" />
+    <Folder Include="public\dwz\themes\default\images\form\" />
+    <Folder Include="public\dwz\themes\default\images\grid\" />
+    <Folder Include="public\dwz\themes\default\images\layout\" />
+    <Folder Include="public\dwz\themes\default\images\menu\" />
+    <Folder Include="public\dwz\themes\default\images\panel\" />
+    <Folder Include="public\dwz\themes\default\images\progressBar\" />
+    <Folder Include="public\dwz\themes\default\images\shadow\" />
+    <Folder Include="public\dwz\themes\default\images\tabs\" />
+    <Folder Include="public\dwz\themes\default\images\tree\" />
+    <Folder Include="public\dwz\themes\green\" />
+    <Folder Include="public\dwz\themes\green\images\" />
+    <Folder Include="public\dwz\themes\green\images\accordion\" />
+    <Folder Include="public\dwz\themes\green\images\alert\" />
+    <Folder Include="public\dwz\themes\green\images\button\" />
+    <Folder Include="public\dwz\themes\green\images\dialog\" />
+    <Folder Include="public\dwz\themes\green\images\form\" />
+    <Folder Include="public\dwz\themes\green\images\grid\" />
+    <Folder Include="public\dwz\themes\green\images\layout\" />
+    <Folder Include="public\dwz\themes\green\images\panel\" />
+    <Folder Include="public\dwz\themes\green\images\tabs\" />
+    <Folder Include="public\dwz\themes\green\images\tree\" />
+    <Folder Include="public\dwz\themes\purple\" />
+    <Folder Include="public\dwz\themes\purple\images\" />
+    <Folder Include="public\dwz\themes\purple\images\accordion\" />
+    <Folder Include="public\dwz\themes\purple\images\alert\" />
+    <Folder Include="public\dwz\themes\purple\images\button\" />
+    <Folder Include="public\dwz\themes\purple\images\dialog\" />
+    <Folder Include="public\dwz\themes\purple\images\form\" />
+    <Folder Include="public\dwz\themes\purple\images\grid\" />
+    <Folder Include="public\dwz\themes\purple\images\layout\" />
+    <Folder Include="public\dwz\themes\purple\images\menu\" />
+    <Folder Include="public\dwz\themes\purple\images\panel\" />
+    <Folder Include="public\dwz\themes\purple\images\progressBar\" />
+    <Folder Include="public\dwz\themes\purple\images\shadow\" />
+    <Folder Include="public\dwz\themes\purple\images\tabs\" />
+    <Folder Include="public\dwz\themes\purple\images\tree\" />
+    <Folder Include="public\dwz\themes\silver\" />
+    <Folder Include="public\dwz\themes\silver\images\" />
+    <Folder Include="public\dwz\themes\silver\images\accordion\" />
+    <Folder Include="public\dwz\themes\silver\images\alert\" />
+    <Folder Include="public\dwz\themes\silver\images\button\" />
+    <Folder Include="public\dwz\themes\silver\images\dialog\" />
+    <Folder Include="public\dwz\themes\silver\images\form\" />
+    <Folder Include="public\dwz\themes\silver\images\grid\" />
+    <Folder Include="public\dwz\themes\silver\images\layout\" />
+    <Folder Include="public\dwz\themes\silver\images\menu\" />
+    <Folder Include="public\dwz\themes\silver\images\panel\" />
+    <Folder Include="public\dwz\themes\silver\images\progressBar\" />
+    <Folder Include="public\dwz\themes\silver\images\shadow\" />
+    <Folder Include="public\dwz\themes\silver\images\tabs\" />
+    <Folder Include="public\dwz\themes\silver\images\tree\" />
+    <Folder Include="public\dwz\uploadify\" />
+    <Folder Include="public\dwz\uploadify\css\" />
+    <Folder Include="public\dwz\uploadify\img\" />
+    <Folder Include="public\dwz\uploadify\scripts\" />
+    <Folder Include="public\dwz\xheditor\" />
+    <Folder Include="public\dwz\xheditor\xheditor_emot\" />
+    <Folder Include="public\dwz\xheditor\xheditor_emot\default\" />
+    <Folder Include="public\dwz\xheditor\xheditor_emot\ipb\" />
+    <Folder Include="public\dwz\xheditor\xheditor_emot\msn\" />
+    <Folder Include="public\dwz\xheditor\xheditor_emot\pidgin\" />
+    <Folder Include="public\dwz\xheditor\xheditor_lang\" />
+    <Folder Include="public\dwz\xheditor\xheditor_plugins\" />
+    <Folder Include="public\dwz\xheditor\xheditor_plugins\multiupload\" />
+    <Folder Include="public\dwz\xheditor\xheditor_plugins\multiupload\img\" />
+    <Folder Include="public\dwz\xheditor\xheditor_plugins\multiupload\swfupload\" />
+    <Folder Include="public\dwz\xheditor\xheditor_skin\" />
+    <Folder Include="public\dwz\xheditor\xheditor_skin\default\" />
+    <Folder Include="public\dwz\xheditor\xheditor_skin\default\img\" />
+    <Folder Include="public\dwz\xheditor\xheditor_skin\nostyle\" />
+    <Folder Include="public\dwz\xheditor\xheditor_skin\nostyle\img\" />
+    <Folder Include="public\dwz\xheditor\xheditor_skin\o2007blue\" />
+    <Folder Include="public\dwz\xheditor\xheditor_skin\o2007blue\img\" />
+    <Folder Include="public\dwz\xheditor\xheditor_skin\o2007silver\" />
+    <Folder Include="public\dwz\xheditor\xheditor_skin\o2007silver\img\" />
+    <Folder Include="public\dwz\xheditor\xheditor_skin\vista\" />
+    <Folder Include="public\dwz\xheditor\xheditor_skin\vista\img\" />
+    <Folder Include="public\images\" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\jquery\" />
+    <Folder Include="typings\globals\moment\" />
+    <Folder Include="typings\globals\node\" />
+    <Folder Include="views\" />
+    <Folder Include="views\home\" />
+    <Folder Include="views\role\" />
+    <Folder Include="views\sysmenu\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\jquery\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\moment\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

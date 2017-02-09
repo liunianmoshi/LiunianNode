@@ -1,0 +1,40 @@
+﻿<div class="pageContent">
+    <form method="post" action="/role/save" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+        <input name="ID" type="hidden" value="<%= model.ID ?model.ID:'' %>" />
+        <input name="CreateTime" type="hidden" value="<%= model.CreateTime ? formatTime(model.CreateTime,'YYYY-MM-DD HH:mm:ss'):'' %>" />
+        <div class="pageFormContent" layouth="56">
+            <p>
+                <label>角色名称：</label>
+                <input class="required textInput" id="RoleName" name="RoleName" size="30" type="text"
+                       value="<%= model.RoleName ?model.RoleName:'' %>" />
+            </p>
+            <p>
+                <label>角色状态：</label>
+                <input <%- model && model.RoleState==1?'checked=checked':'' %> name="RoleState" type="radio" value="1" />开启
+                <input <%- model && model.RoleState==0?'checked=checked':'' %>  name="RoleState" type="radio" value="0" />关闭
+            </p>
+        </div>
+        <div class="formBar">
+            <ul>
+                <li>
+                    <div class="buttonActive">
+                        <div class="buttonContent">
+                            <button type="submit">
+                                保存
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="button">
+                        <div class="buttonContent">
+                            <button type="button" class="close">
+                                取消
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,108 @@
+﻿<form id="pagerForm" method="post" action="/sysmenu/list">
+    <input type="hidden" name="pageNum" value="1" />
+    <input type="hidden" name="numPerPage" value="<%- typeof page != 'undefined'? page.pageSize:1 %>" />
+</form>
+<div class="panelBar">
+    <ul class="toolBar">
+        <li><a class="add" href="/sysmenu/edit" target="dialog" mask="true"><span>添加</span></a></li>
+        <li><a class="edit" href="/sysmenu/edit?id={ID}" target="dialog" mask="true"><span>修改</span></a></li>
+        <li><a class="delete" href="/sysmenu/delete?id={ID}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
+        <li class="line">line</li>
+    </ul>
+</div>
+<table class="table" width="100%" layouth="113">
+    <thead>
+        <tr>
+            <th width="150" align="left">　菜单名称</th>
+            <th width="100" align="center">菜单Controller</th>
+            <th width="100" align="center">菜单Action</th>
+            <th width="80" align="center">是否视图</th>
+            <th width="80" align="center">排序号</th>
+            <th width="80" align="center">更新时间</th>
+            <th width="80" align="center">创建时间</th>
+        </tr>
+    </thead>
+    <tbody id="menulist">
+    </tbody>
+</table>
+<script type="text/x-jquery-tmpl" id="menulisttmpl">
+    <tr target="ID" rel="{ID}">
+        <td><div style="padding-left:{MenuLevel}px;">{MenuName}</div></td>
+        <td>{Controller}</td>
+        <td>{Action}</td>
+        <td>{IsView}</td>
+        <td>{OrderNum}</td>
+        <td>{UpdateTime}</td>
+        <td>{CreateTime}</td>
+</script>
+<script type="text/javascript">
+    var listPage = function(){
+        var list = <%- typeof data !="undefined" && data ?data:'[]' %>;
+        if(list.length > 0){
+            var moduleLists = list.filter(function(item){
+                if(item.MenuLevel == 1){
+                    return true;
+                }
+                return false;
+            });
+            var html = [];
+            var moduletmpl = $("#menulisttmpl").html();
+            if(moduleLists.length > 0){
+                var module = moduleLists[0];
+                module.MenuLevel = module.MenuLevel*10;
+                module.Action = module.Action?module.Action:'';
+                module.UpdateTime = moment(module.UpdateTime).format("YYYY-MM-DD HH:mm:ss");
+                module.CreateTime = moment(module.CreateTime).format("YYYY-MM-DD HH:mm:ss");
+                module.IsView = module.IsView == 1?"是" : "否";
+                var modulehtml = liunian.Utils.dataReplace(moduletmpl,module);
+                html.push(modulehtml);
+
+                var meunuLists = list.filter(function(item){
+                    if(item.ParentId == module.ID){
+                        return true;
+                    }
+                    return false;
+                });
+                if(meunuLists.length > 0){
+                    for (var i = 0; i < meunuLists.length; i++) {
+                        var data = meunuLists[i];
+                        data.MenuName = "|-"+data.MenuName;
+                        data.MenuLevel = data.MenuLevel*10;
+                        data.Action = data.Action?data.Action:'';
+                        var updateTime = data.UpdateTime.replace("Z", "").replace("T"," ");
+                        data.UpdateTime = moment(updateTime).format("YYYY-MM-DD HH:mm:ss");
+                        var createTime = data.CreateTime.replace("Z", "").replace("T"," ");
+                        data.CreateTime = moment(createTime).format("YYYY-MM-DD HH:mm:ss");
+                        data.IsView = data.IsView == 1?"是" : "否";
+                        var h = liunian.Utils.dataReplace(moduletmpl,data);
+                        html.push(h);
+
+                        var childLists = list.filter(function(item){
+                            if(item.ParentId == data.ID){
+                                return true;
+                            }
+                            return false;
+                        });
+                        for (var i = 0; i < childLists.length; i++) {
+                            var data = childLists[i];
+                            data.MenuName = "|-"+data.MenuName;
+                            data.MenuLevel = data.MenuLevel*10;
+                            data.Action = data.Action?data.Action:'';
+                            var updateTime = data.UpdateTime.replace("Z", "").replace("T"," ");
+                            data.UpdateTime = moment(updateTime).format("YYYY-MM-DD HH:mm:ss");
+                            var createTime = data.CreateTime.replace("Z", "").replace("T"," ");
+                            data.CreateTime = moment(createTime).format("YYYY-MM-DD HH:mm:ss");
+                            data.IsView = data.IsView == 1?"是" : "否";
+                            var h = liunian.Utils.dataReplace(moduletmpl,data);
+                            html.push(h);
+                        }
+                    }
+                }
+            }
+            $("#menulist").html(html.join(''));
+        }
+    };
+    listPage();
+</script>
+<%- typeof page != 'undefined'? page.renderPage():'' %>
+

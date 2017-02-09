@@ -1,0 +1,106 @@
+﻿<form action="/role/saveauthor" method="post" onsubmit="return validateCallback(this,dialogAjaxDone);">
+    <input type="hidden" name="RoleId" value=""  />
+    <div class="pageContent">
+        <div class="panelBar">
+            <ul class="toolBar">
+                <li><span>当前权限组：<font class="redMsg">[<%=roleList && roleList.RoleName?roleList.RoleName:'' %>]</font></span></li>
+                <li><span style="color:Green;">角色是为了便于管理权限的权限集合，不同的权限集合代表不同的操作身份。</span></li>
+            </ul>
+        </div>
+        <div class="tabs" currentindex="0" eventtype="click">
+            <div class="tabsHeader">
+                <div class="tabsHeaderContent">
+                    <ul id="module">
+                        <li><a href="javascript:;"><span>@item.MenuName</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tabsContent" layouth="98" id="datacontent">
+                <div>
+                    <table class="table" width="100%" layouth="138">
+                        <thead>
+                            <tr>
+                                <th width="22"><input type="checkbox" group="@module.Controller" class="checkboxCtrl" /></th>
+                                <th>权限名称</th>
+                                <th width="100">Controller</th>
+                                <th width="100">Action</th>
+                                <th width="120" align="center">是否是视图</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input name="@module.Controller" value="@view.ID" type="checkbox" @(Model.SysMenu.Where(a=> a.ID == view.ID).FirstOrDefault() != null ? "checked='checked'" : "") ; /></td>
+                                <td>@view.MenuName</td>
+                                <td>@view.Controller</td>
+                                <td>@view.Action</td>
+                                <td>@(view.IsView ? "是" : "否")</td>
+                            </tr>
+                            <tr>
+                                <td><input name="@module.Controller" value="@child.ID" type="checkbox" @(Model.SysMenu.Where(a=> a.ID == child.ID).FirstOrDefault() != null ? "checked='checked'" : "") ; /></td>
+                                <td><div style="padding-left:@string.Format(" {0}px;",child.MenuLevel*10)">@child.MenuName</div></td>
+                                <td>@child.Controller</td>
+                                <td>@child.Action</td>
+                                <td>@(child.IsView ? "是" : "否")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                <li>
+                    <div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</form>
+<script type="text/x-jquery-tmpl" id="moduletmpl">
+    <li><a href="javascript:;"><span>{MenuName}</span></a></li>
+</script>
+<script type="text/x-jquery-tmpl" id="tagtmpl">
+    <div>
+        <table class="table" width="100%" layouth="138">
+            <thead>
+                <tr>
+                    <th width="22"><input type="checkbox" group="@module.Controller" class="checkboxCtrl" /></th>
+                    <th>权限名称</th>
+                    <th width="100">Controller</th>
+                    <th width="100">Action</th>
+                    <th width="120" align="center">是否是视图</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {DataContent}
+            </tbody>
+        </table>
+    </div>
+</script>
+<script type="text/javascript">
+    function roleSetAuthor(){
+        var menuList = <%-menuList %>;
+        if(menuList && menuList.length > 0){
+            var moduletmpl = $("#moduletmpl").html();
+            var moduleList = menuList.filter(function(item){
+                if(item.ParentId == 0){
+                    return true;
+                }
+                return false;
+            });
+            var modulehtml = [];
+            var tagstmpl = $("#datacontent").html();
+
+            for (var i = 0; i < moduleList.length; i++) {
+                var data = moduleList[i];
+                var h = liunian.Utils.dataReplace(moduletmpl,data);
+                modulehtml.push(h);
+            }
+            $("#module").html(modulehtml.join(''));
+        }
+    }
+    roleSetAuthor();
+</script>
