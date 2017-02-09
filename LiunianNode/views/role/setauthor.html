@@ -1,5 +1,5 @@
 ﻿<form action="/role/saveauthor" method="post" onsubmit="return validateCallback(this,dialogAjaxDone);">
-    <input type="hidden" name="RoleId" value=""  />
+    <input type="hidden" name="RoleId" value="" />
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
@@ -16,36 +16,7 @@
                 </div>
             </div>
             <div class="tabsContent" layouth="98" id="datacontent">
-                <div>
-                    <table class="table" width="100%" layouth="138">
-                        <thead>
-                            <tr>
-                                <th width="22"><input type="checkbox" group="@module.Controller" class="checkboxCtrl" /></th>
-                                <th>权限名称</th>
-                                <th width="100">Controller</th>
-                                <th width="100">Action</th>
-                                <th width="120" align="center">是否是视图</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input name="@module.Controller" value="@view.ID" type="checkbox" @(Model.SysMenu.Where(a=> a.ID == view.ID).FirstOrDefault() != null ? "checked='checked'" : "") ; /></td>
-                                <td>@view.MenuName</td>
-                                <td>@view.Controller</td>
-                                <td>@view.Action</td>
-                                <td>@(view.IsView ? "是" : "否")</td>
-                            </tr>
-                            <tr>
-                                <td><input name="@module.Controller" value="@child.ID" type="checkbox" @(Model.SysMenu.Where(a=> a.ID == child.ID).FirstOrDefault() != null ? "checked='checked'" : "") ; /></td>
-                                <td><div style="padding-left:@string.Format(" {0}px;",child.MenuLevel*10)">@child.MenuName</div></td>
-                                <td>@child.Controller</td>
-                                <td>@child.Action</td>
-                                <td>@(child.IsView ? "是" : "否")</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                
             </div>
         </div>
         <div class="formBar">
@@ -80,6 +51,15 @@
         </table>
     </div>
 </script>
+<script type="text/x-jquery-tmpl" id="rowtmpl">
+    <tr>
+        <td><input name="{Controller}" value="{ID}" type="checkbox"  /></td>
+        <td>{MenuName}</td>
+        <td>{Controller}</td>
+        <td>{Action}</td>
+        <td>@(view.IsView ? "是" : "否")</td>
+    </tr>
+</script>
 <script type="text/javascript">
     function roleSetAuthor(){
         var menuList = <%-menuList %>;
@@ -91,13 +71,46 @@
                 }
                 return false;
             });
-            var modulehtml = [];
-            var tagstmpl = $("#datacontent").html();
-
+            var modulehtml = [],tagshtml=[],rowhtml=[];
+            var tagstmpl = $("#tagtmpl").html();
+            var rowtmpl = $("#rowtmpl").html();
             for (var i = 0; i < moduleList.length; i++) {
-                var data = moduleList[i];
-                var h = liunian.Utils.dataReplace(moduletmpl,data);
+                var module = moduleList[i];
+                var h = liunian.Utils.dataReplace(moduletmpl,module);
                 modulehtml.push(h);
+
+                var moduleId = module.ID;
+                var viewList = menuList.filter(function(item){
+                    if(item.ParentId == moduleId){
+                        return true;
+                    }
+                    return false;
+                });
+                if(viewList.length > 0){
+                    for (var v = 0; v < viewList.length; v++) {
+                        var view = viewList[v];
+                        var viewId = view.ID;
+                        var childLists = menuList.filter(function(item){
+                            if(item.ParentId == viewId){
+                                return true;
+                            }
+                            return false;
+                        });
+                        rowhtml =[];
+                        if(childLists.length > 0){
+                            for (var c = 0; c < childLists.length; c++) {
+                                var child = childLists[c];
+                                var childStr = liunian.Utils.dataReplace(rowtmpl,child);
+                                rowhtml.push(childStr);
+                            }
+                        }
+                        var rowStr = rowhtml.join('');
+                        var tagStr = tagstmpl.replace("{DataContent}",rowStr);
+                        console.info(childLists);
+                        tagshtml.push(tagStr);
+                    }
+                    $("#datacontent").html(tagshtml.join(""));
+                }
             }
             $("#module").html(modulehtml.join(''));
         }
