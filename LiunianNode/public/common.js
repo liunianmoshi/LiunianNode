@@ -206,7 +206,7 @@
     //    }
     //    return a;
     //};
-    ////得到一个数组不重复的元素集合,wangyunpeng
+    ////得到一个数组不重复的元素集合
     //Array.prototype.uniquelize = function () {
     //    var ra = new Array();
     //    for (var i = 0; i < this.length; i++) {

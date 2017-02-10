@@ -32,6 +32,8 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="common\dbContext.js" />
+    <Compile Include="controller\employee.js" />
+    <Compile Include="model\employee.js" />
     <Compile Include="model\roleauthor.js" />
     <Compile Include="public\common.js" />
     <Compile Include="common\pagedList.js" />
@@ -575,6 +577,7 @@
     <Content Include="public\dwz\xheditor\xheditor_skin\vista\ui.css" />
     <Content Include="public\images\123.png" />
     <Content Include="README.md" />
+    <Content Include="views\employee\index.html" />
     <Content Include="views\home\index.html" />
     <Content Include="views\role\edit.html" />
     <Content Include="views\role\index.html" />
@@ -699,6 +702,7 @@
     <Folder Include="typings\globals\node\" />
     <Folder Include="views\" />
     <Folder Include="views\home\" />
+    <Folder Include="views\employee\" />
     <Folder Include="views\role\" />
     <Folder Include="views\sysmenu\" />
   </ItemGroup>

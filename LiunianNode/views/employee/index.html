@@ -1,0 +1,61 @@
+﻿<form ID="pagerForm" method="post" action="employee/index" )">
+    <input type="hidden" name="keyword" value="@ViewBag.keyword" />
+    <input type="hidden" name="pageNum" value="1" />
+    <input type="hidden" name="numPerPage" value="@ViewBag.NumPerPage" />
+</form>
+
+<div class="pageHeader">
+    <form onsubmit="return navTabSearch(this);" action="@Url.Action(" Index","Employee")" method="post">
+        <div class="searchBar">
+            <table class="searchContent">
+                <tr>
+                    <td>
+                        登陆账号：<input type="text" name="keyword" value="@ViewBag.keyword" />
+                    </td>
+                    <td><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+<div class="pageContent">
+    <div class="panelBar">
+        <ul class="toolBar">
+            <li><a class="add" href="/employee/edit" target="dialog" mask="true"><span>添加</span></a></li>
+            <li><a class="delete" href="/employee/edit?id={ID}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
+            <li><a class="edit" href="/employee/updateisuse?id={ID}" target="ajaxTodo" title="确定要修改吗?"><span>启/禁用</span></a></li>
+            <li class="line">line</li>
+        </ul>
+    </div>
+    <table class="table" width="100%" layouth="112">
+        <thead>
+            <tr>
+                <th width="120" align="center">登陆账号</th>
+                <th width="100" align="center">姓名</th>
+                <th width="150" align="center">上次登陆IP</th>
+                <th width="80" align="center">登陆次数</th>
+                <th width="80" align="center">状态</th>
+                <th width="80" align="center">所属角色</th>
+                <th width="80" align="center">上次登陆时间</th>
+                <th width="80" align="center">创建时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(data && data.length > 0) {%>
+            <% for(var i=0; i<data.length; i++) { %>
+                <tr target="ID" rel="<%= data[i].ID %>">
+                    <td><%= data[i].LoginName %></td>
+                    <td><%= data[i].UserName %></td>
+                    <td><%= data[i].LatestLoginIP %></td>
+                    <td><%= data[i].LoginTimes %></td>
+                    <td><%= data[i].IsUse ? "启用" : "禁用" %></td>
+                    <td>XXXXX</td>
+                    <td><%= data[i].LatestLoginTime %></td>
+                    <td><%= formatTime(data[i].CreateTime,"YYYY-MM-DD HH:mm:ss") %></td>
+                </tr>
+                <% } %>
+            <% } %>
+        </tbody>
+    </table>
+    <%- page?page.renderPage():'' %>
+</div>

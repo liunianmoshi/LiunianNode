@@ -33,14 +33,13 @@ exports.dropMenuList = function (data,parentId) {
                     continue;
                 }
 
-                var itemId = item.Id;
-                var viewList = data.filter(function (chid) {
-                    if (chid.ParentId == itemId) {
+                var itemId = item.ID;
+                var viewList = data.filter(function (child) {
+                    if (child.ParentId == itemId) {
                         return true;
                     }
                     return false;
                 });
-
                 if (viewList.length > 0) {
                     for (var i = 0; i < viewList.length; i++) {
                         var view = viewList[i];

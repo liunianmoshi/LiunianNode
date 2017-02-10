@@ -116,10 +116,10 @@ sysmenuController.save = function (req, res) {
     var model = req.body;
     if (model) {
         model.UpdateTime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+        model.IsView = model.IsView? parseInt(model.IsView):0;
         co(function* () {
             var result = 0;
             if (model.ID > 0) {
-                model.IsView = parseInt(model.IsView);
                 var fields = [];
                 for (var item in model) {
                     fields.push(item);
@@ -141,9 +141,11 @@ sysmenuController.save = function (req, res) {
                 res.json(returnResult.failed());
             }
         }).catch(function (e) {
+            console.info(e);
             res.json(returnResult.failed());
         });
     } else {
+        console.info("请求参数为空");
         res.json(returnResult.failed());
     }
 }

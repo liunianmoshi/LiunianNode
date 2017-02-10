@@ -1,5 +1,5 @@
 ﻿<form action="/role/saveauthor" method="post" onsubmit="return validateCallback(this,dialogAjaxDone);">
-    <input type="hidden" name="RoleId" value="" />
+    <input type="hidden" name="RoleId" value="<%=roleList && roleList.ID?roleList.ID:'' %>" />
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
@@ -11,7 +11,6 @@
             <div class="tabsHeader">
                 <div class="tabsHeaderContent">
                     <ul id="module">
-                        <li><a href="javascript:;"><span>@item.MenuName</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -29,7 +28,7 @@
         </div>
     </div>
 </form>
-<script type="text/x-jquery-tmpl" id="moduletmpl">
+<script type="text/x-jquery-tmpl" id="rolemoduletmpl">
     <li><a href="javascript:;"><span>{MenuName}</span></a></li>
 </script>
 <script type="text/x-jquery-tmpl" id="tagtmpl">
@@ -37,7 +36,7 @@
         <table class="table" width="100%" layouth="138">
             <thead>
                 <tr>
-                    <th width="22"><input type="checkbox" group="@module.Controller" class="checkboxCtrl" /></th>
+                    <th width="22"><input type="checkbox" group="{Controller}" class="checkboxCtrl" /></th>
                     <th>权限名称</th>
                     <th width="100">Controller</th>
                     <th width="100">Action</th>
@@ -53,18 +52,19 @@
 </script>
 <script type="text/x-jquery-tmpl" id="rowtmpl">
     <tr>
-        <td><input name="{Controller}" value="{ID}" type="checkbox"  /></td>
-        <td>{MenuName}</td>
+        <td><input name="{ModuleController}" value="{ID}" type="checkbox" {IsCheck}  /></td>
+        <td style="padding-left:{MenuLevel}px">{MenuName}</td>
         <td>{Controller}</td>
         <td>{Action}</td>
-        <td>@(view.IsView ? "是" : "否")</td>
+        <td>{IsView}</td>
     </tr>
 </script>
 <script type="text/javascript">
     function roleSetAuthor(){
         var menuList = <%-menuList %>;
+        var havamenuList = <%- havaMenu %>;
         if(menuList && menuList.length > 0){
-            var moduletmpl = $("#moduletmpl").html();
+            var moduletmpl = $("#rolemoduletmpl").html();
             var moduleList = menuList.filter(function(item){
                 if(item.ParentId == 0){
                     return true;
@@ -78,7 +78,6 @@
                 var module = moduleList[i];
                 var h = liunian.Utils.dataReplace(moduletmpl,module);
                 modulehtml.push(h);
-
                 var moduleId = module.ID;
                 var viewList = menuList.filter(function(item){
                     if(item.ParentId == moduleId){
@@ -87,31 +86,72 @@
                     return false;
                 });
                 if(viewList.length > 0){
+                    rowhtml =[];
                     for (var v = 0; v < viewList.length; v++) {
                         var view = viewList[v];
+                        view.Action = view.Action?view.Action:'';
+                        view.IsView = view.IsView && view.IsView == 1?'是':'否';
+                        view.ModuleController = module.Controller;
+
                         var viewId = view.ID;
+                        if(havamenuList && havamenuList.length > 0){
+                            var tempviewMenu = havamenuList.filter(function(item){
+                                if(item.MenuId  == viewId){
+                                    return true;
+                                }
+                                return false;
+                            });
+                            if(tempviewMenu && tempviewMenu.length > 0){
+                                view.IsCheck = "checked='checked'";
+                            }else{
+                                view.IsCheck = '';
+                            }
+                        }else{
+                            view.IsCheck = '';
+                        }
+                        var viewStr = liunian.Utils.dataReplace(rowtmpl,view);
+                        rowhtml.push(viewStr);
+                        
                         var childLists = menuList.filter(function(item){
                             if(item.ParentId == viewId){
                                 return true;
                             }
                             return false;
                         });
-                        rowhtml =[];
+                        
                         if(childLists.length > 0){
                             for (var c = 0; c < childLists.length; c++) {
                                 var child = childLists[c];
+                                child.Action = child.Action?child.Action:'';
+                                child.IsView = child.IsView && child.IsView == 1?'是':'否';
+                                child.MenuLevel = child.MenuLevel*10;
+                                child.ModuleController = module.Controller;
+                                if(havamenuList && havamenuList.length > 0){
+                                    var tempchildMenu = havamenuList.filter(function(item){
+                                        if(item.MenuId  == child.ID){
+                                            return true;
+                                        }
+                                        return false;
+                                    });
+                                    if(tempchildMenu && tempchildMenu.length > 0){
+                                        child.IsCheck = "checked='checked'";
+                                    }else{
+                                        child.IsCheck = '';
+                                    }
+                                }else{
+                                    child.IsCheck = '';
+                                }
                                 var childStr = liunian.Utils.dataReplace(rowtmpl,child);
                                 rowhtml.push(childStr);
                             }
                         }
-                        var rowStr = rowhtml.join('');
-                        var tagStr = tagstmpl.replace("{DataContent}",rowStr);
-                        console.info(childLists);
-                        tagshtml.push(tagStr);
                     }
-                    $("#datacontent").html(tagshtml.join(""));
                 }
+                var rowStr = rowhtml.join('');
+                var tagStr = tagstmpl.replace("{DataContent}",rowStr).replace("{Controller}",module.Controller);
+                tagshtml.push(tagStr);
             }
+            $("#datacontent").html(tagshtml.join(""));
             $("#module").html(modulehtml.join(''));
         }
     }

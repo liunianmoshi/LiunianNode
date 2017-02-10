@@ -90,10 +90,10 @@ roleController.delete = function (req, res) {
             var result = yield role.update({
                 'State': -1
             }, {
-                    where: {
+                    'where': {
                         ID: id
                     },
-                    fields: ['State']
+                    'fields': ['State']
                 });
             if (result > 0) {
                 res.json(returnResult.deleteSuccess('role_index'));
@@ -125,9 +125,15 @@ roleController.setauthor = function (req, res) {
         //    'raw': true
         //});
         var roleList = {};
-
+        var havaMenu = [];
         if (id && id > 0) {
             roleList = yield role.findById(id, {
+                'raw': true
+            });
+            havaMenu = yield roleauthor.findAll({
+                'where': {
+                    'RoleId': id
+                },
                 'raw': true
             });
         }
@@ -141,11 +147,54 @@ roleController.setauthor = function (req, res) {
             'order': 'ID desc',
             'raw': true
         });
-        res.render("role/setauthor", { menuList: JSON.stringify(menuList), roleList: roleList });
+        res.render("role/setauthor", { menuList: JSON.stringify(menuList), roleList: roleList, havaMenu:JSON.stringify(havaMenu) });
     }).catch(function (e) {
         console.info(e);
-        res.render("role/setauthor",{ menuList: "[]", roleList: {} });
+        res.render("role/setauthor", { menuList: "[]", roleList: {}, havaMenu:'[]' });
     });
 }
 
+roleController.saveauthor = function (req, res) {
+    var returnResult = require('../common/returnResult');
+    var model = req.body;
+    if (model) {
+        var roleId = model.RoleId;
+        var list = [];
+        for (var item in model) {
+            if (item != "RoleId") {
+                var arry = model[item];
+                if (!(arry instanceof Array)) {
+                    arry = arry.toString().split(',');
+                }
+                if (arry.length > 0) {
+                    for (var i = 0; i < arry.length; i++) {
+                        if (arry[i] > 0) {
+                            var author = {};
+                            author.RoleId = roleId;
+                            author.MenuId = arry[i];
+                            list.push(author);
+                        }
+                    }
+                }
+            }
+        }
+        co(function* () {
+            var result = 0;
+            if (list.length > 0) {
+                result = yield roleauthor.destroy({ 'where': { 'RoleId': roleId } });
+                result = yield roleauthor.bulkCreate(list);
+            }
+            if (result) {
+                res.json(returnResult.closeSuccess("role_index"));
+            } else {
+                res.json(returnResult.failed());
+            }
+        }).catch(function (e) {
+            console.info(e);
+            res.json(returnResult.failed());
+        });
+    } else {
+        res.json(returnResult.failed());
+    }
+}
 module.exports = roleController;
