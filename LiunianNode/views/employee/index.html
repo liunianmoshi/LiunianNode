@@ -50,7 +50,7 @@
                     <td><%= data[i].LoginTimes %></td>
                     <td><%= data[i].IsUse ? "启用" : "禁用" %></td>
                     <td>XXXXX</td>
-                    <td><%= data[i].LatestLoginTime %></td>
+                    <td><%= formatTime(data[i].LatestLoginTime,"YYYY-MM-DD HH:mm:ss") %></td>
                     <td><%= formatTime(data[i].CreateTime,"YYYY-MM-DD HH:mm:ss") %></td>
                 </tr>
                 <% } %>

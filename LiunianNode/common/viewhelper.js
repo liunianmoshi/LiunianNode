@@ -1,8 +1,9 @@
 ﻿'use strict';
 
 var moment = require('moment');
+
 exports.formatTime = function (data, formatStr) {
-    return moment(data).format(formatStr);
+    return moment(data).add('hours',-8).format(formatStr);
 }
 
 exports.dropMenuList = function (data,parentId) {

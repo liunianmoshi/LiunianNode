@@ -180,8 +180,8 @@ roleController.saveauthor = function (req, res) {
         }
         co(function* () {
             var result = 0;
+            result = yield roleauthor.destroy({ 'where': { 'RoleId': roleId } });
             if (list.length > 0) {
-                result = yield roleauthor.destroy({ 'where': { 'RoleId': roleId } });
                 result = yield roleauthor.bulkCreate(list);
             }
             if (result) {

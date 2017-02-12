@@ -59,7 +59,6 @@ CREATE TABLE `think_sysmenu` (
 
 
 CREATE TABLE `think_roleauthor` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `RoleId` int(11) NOT NULL,
   `MenuId` int(11) NOT NULL,
   PRIMARY KEY (`RoleId`,`MenuId`)
@@ -76,16 +75,11 @@ CREATE TABLE `think_employee` (
   `UserName` varchar(64) DEFAULT NULL,
   `Password` varchar(64) DEFAULT NULL,
   `LoginTimes` varchar(64) DEFAULT NULL,
-  `LatestLoginTime` varchar(64) DEFAULT NULL,
-  `CurrLoginTime` varchar(64) DEFAULT NULL,
+  `LatestLoginTime` datetime DEFAULT NULL,
+  `CurrLoginTime` datetime DEFAULT NULL,
   `LatestLoginIP` varchar(64) DEFAULT NULL,
   `CurrLoginIP` varchar(64) DEFAULT NULL,
   `RoleId` varchar(64) DEFAULT NULL,
   `IsUse` varchar(64) DEFAULT NULL,
-  `ParentId` int(11) NOT NULL DEFAULT '0',
-  `MenuLevel` int(11) DEFAULT NULL,
-  `IsView` tinyint(4) NOT NULL DEFAULT '0',
-  `ICON` varchar(64) DEFAULT NULL,
-  `OrderNum` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
