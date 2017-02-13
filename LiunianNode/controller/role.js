@@ -54,6 +54,7 @@ roleController.save = function (req, res) {
     var model = req.body;
     if (model) {
         model.UpdateTime = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+
         co(function* () {
             var result = 0;
             if (model.ID > 0) {

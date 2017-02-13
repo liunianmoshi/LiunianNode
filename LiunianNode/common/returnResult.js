@@ -39,6 +39,12 @@ var returnResult = {
             forwardUrl : "",
             confirmMsg : ""
         }
+    },
+    showFail: function (msg) {
+        return {
+            statusCode : "300",
+            message : msg
+        };
     }
 };
 

@@ -32,9 +32,14 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="common\dbContext.js" />
+    <Compile Include="controller\auth.js" />
     <Compile Include="controller\employee.js" />
     <Compile Include="model\employee.js" />
     <Compile Include="model\roleauthor.js" />
+    <Compile Include="public\admin\js\jquery-1.8.2.min.js" />
+    <Compile Include="public\admin\js\scripts.js" />
+    <Compile Include="public\admin\js\supersized-init.js" />
+    <Compile Include="public\admin\js\supersized.3.2.7.min.js" />
     <Compile Include="public\common.js" />
     <Compile Include="common\pagedList.js" />
     <Compile Include="common\returnResult.js" />
@@ -72,7 +77,17 @@
     <Compile Include="public\jquery-1.10.2.min.js" />
     <Compile Include="public\moment.js" />
     <Compile Include="config\route.js" />
+    <Compile Include="security\authority.js" />
     <Content Include="package.json" />
+    <Content Include="public\admin\css\reset.css" />
+    <Content Include="public\admin\css\style.css" />
+    <Content Include="public\admin\css\supersized.css" />
+    <Content Include="public\admin\img\backgrounds\1.jpg" />
+    <Content Include="public\admin\img\backgrounds\2.jpg" />
+    <Content Include="public\admin\img\backgrounds\3.jpg" />
+    <Content Include="public\admin\img\facebook.png" />
+    <Content Include="public\admin\img\progress.gif" />
+    <Content Include="public\admin\img\twitter.png" />
     <Content Include="public\dwz\dwz.frag.xml" />
     <Content Include="public\dwz\themes\azure\images\accordion\accordion.png" />
     <Content Include="public\dwz\themes\azure\images\account_info_bg.png" />
@@ -577,8 +592,10 @@
     <Content Include="public\dwz\xheditor\xheditor_skin\vista\ui.css" />
     <Content Include="public\images\123.png" />
     <Content Include="README.md" />
+    <Content Include="views\auth\index.html" />
+    <Content Include="views\employee\edit.html" />
     <Content Include="views\employee\index.html" />
-    <Content Include="views\home\index.html" />
+    <Content Include="views\index\index.html" />
     <Content Include="views\role\edit.html" />
     <Content Include="views\role\index.html" />
     <Content Include="views\role\setauthor.html" />
@@ -591,7 +608,13 @@
     <Folder Include="common\" />
     <Folder Include="config\" />
     <Folder Include="model\" />
+    <Folder Include="security\" />
     <Folder Include="public\" />
+    <Folder Include="public\admin\" />
+    <Folder Include="public\admin\css\" />
+    <Folder Include="public\admin\img\" />
+    <Folder Include="public\admin\img\backgrounds\" />
+    <Folder Include="public\admin\js\" />
     <Folder Include="public\dwz\" />
     <Folder Include="public\dwz\js\" />
     <Folder Include="public\dwz\themes\" />
@@ -697,16 +720,19 @@
     <Folder Include="public\images\" />
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\express-session\" />
     <Folder Include="typings\globals\jquery\" />
     <Folder Include="typings\globals\moment\" />
     <Folder Include="typings\globals\node\" />
     <Folder Include="views\" />
-    <Folder Include="views\home\" />
+    <Folder Include="views\index\" />
     <Folder Include="views\employee\" />
+    <Folder Include="views\auth\" />
     <Folder Include="views\role\" />
     <Folder Include="views\sysmenu\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\express-session\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jquery\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\moment\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />

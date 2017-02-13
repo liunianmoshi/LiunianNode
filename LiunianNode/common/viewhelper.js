@@ -3,7 +3,11 @@
 var moment = require('moment');
 
 exports.formatTime = function (data, formatStr) {
-    return moment(data).add('hours',-8).format(formatStr);
+    if (!data) {
+        return "";
+    }
+    return moment(data).format(formatStr);
+    //moment(data).add('hours', -8).format(formatStr);
 }
 
 exports.dropMenuList = function (data,parentId) {

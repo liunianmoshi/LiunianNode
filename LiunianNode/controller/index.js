@@ -5,5 +5,5 @@
 
 exports.index = function (req, res) {
     
-    res.render('home/index', { title: 'Express123' });
+    res.render('index/index', { title: 'Express123' });
 };

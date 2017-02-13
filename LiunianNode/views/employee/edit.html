@@ -1,0 +1,40 @@
+﻿<div class="pageContent">
+    <form method="post" action="/employee/save" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+        <div class="pageFormContent" layouth="56">
+            <p>
+                <label>权限角色：</label>
+                <select autocomplete="off" class="combox required" id="RoleId" name="RoleId">
+                    <% if(roleList && roleList.length > 0) {%>
+                        <% for(var i=0; i<roleList.length; i++) { %>
+                            <option value="<%=roleList[i].ID %>"><%=roleList[i].RoleName %></option>
+                        <%}%>
+                    <%}%>
+                </select>
+            </p>
+            <p>
+                <label>登陆账号：</label>
+                <input autocomplete="off" class="required textInput" id="LoginName" name="LoginName" size="30" type="text" value="" />
+            </p>
+            <p>
+                <label>姓名：</label>
+                <input autocomplete="off" class="required textInput" id="UserName" name="UserName" size="30" type="text" value="" />
+            </p>
+            <p>
+                <label>密码：</label>
+                <input autocomplete="off" class="required " id="Password" maxlength="20" minlength="6" name="Password" size="30" type="password" />
+            </p>
+            <p>
+                <label>是否启用：</label>
+                <input type="checkbox" checked="checked" name="IsUse" value="1" />
+            </p>
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                <li>
+                    <div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>

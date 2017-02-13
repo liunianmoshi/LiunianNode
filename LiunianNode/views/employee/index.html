@@ -1,16 +1,16 @@
-﻿<form ID="pagerForm" method="post" action="employee/index" )">
-    <input type="hidden" name="keyword" value="@ViewBag.keyword" />
+﻿<form ID="pagerForm" method="post" action="/employee/index" )">
+    <input type="hidden" name="userkeyword" value="<%- userkeyword?userkeyword:'' %>" />
     <input type="hidden" name="pageNum" value="1" />
-    <input type="hidden" name="numPerPage" value="@ViewBag.NumPerPage" />
+    <input type="hidden" name="numPerPage" value="<%- page?page.pageSize:'' %>" />
 </form>
 
 <div class="pageHeader">
-    <form onsubmit="return navTabSearch(this);" action="@Url.Action(" Index","Employee")" method="post">
+    <form onsubmit="return navTabSearch(this);" action="/employee/index" method="post">
         <div class="searchBar">
             <table class="searchContent">
                 <tr>
                     <td>
-                        登陆账号：<input type="text" name="keyword" value="@ViewBag.keyword" />
+                        登陆账号：<input type="text" name="userkeyword" value="<%- userkeyword?userkeyword:'' %>" />
                     </td>
                     <td><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></td>
                 </tr>
@@ -22,7 +22,7 @@
     <div class="panelBar">
         <ul class="toolBar">
             <li><a class="add" href="/employee/edit" target="dialog" mask="true"><span>添加</span></a></li>
-            <li><a class="delete" href="/employee/edit?id={ID}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
+            <li><a class="delete" href="/employee/delete?id={ID}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
             <li><a class="edit" href="/employee/updateisuse?id={ID}" target="ajaxTodo" title="确定要修改吗?"><span>启/禁用</span></a></li>
             <li class="line">line</li>
         </ul>
