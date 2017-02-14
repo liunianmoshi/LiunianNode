@@ -12,6 +12,7 @@ exports.formatTime = function (data, formatStr) {
 
 exports.dropMenuList = function (data,parentId) {
     var html = [];
+    console.info(data);
     html.push("<select class=\"required\" onchange=\"changeSelect()\" name=\"ParentId\">");
     if (data && data.length > 0) {
         parentId = parentId ? parentId : 0;
@@ -45,9 +46,11 @@ exports.dropMenuList = function (data,parentId) {
                     }
                     return false;
                 });
+                console.info(item);
+                console.info(viewList);
                 if (viewList.length > 0) {
-                    for (var i = 0; i < viewList.length; i++) {
-                        var view = viewList[i];
+                    for (var n = 0; n < viewList.length; n++) {
+                        var view = viewList[n];
                         selectStr = '';
                         if (parentId == view.ID) {
                             selectStr = "selected=\"selected\"";

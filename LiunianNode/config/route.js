@@ -116,7 +116,7 @@ function Route(dirname, alias, unknowRouteHandle) {
                 app[method].apply(null, pathArr);
             } else {
                 pathArr.unshift(req, res, next, path.replace('.html', ''));
-                method = isGet ? PATH_DEFAULT : reqMethod.toLowerCase() + 'Index';
+                method = isGet ? PATH_DEFAULT : reqMethod.toLowerCase() + 'index';
                 app[method].apply(null, pathArr);
                 if (typeof app[method] === TYPE_FUNCTION && app[method].length > 3) { // the index function must contains more than 3 arguments
                     app[method].apply(null, pathArr);

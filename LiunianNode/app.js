@@ -40,10 +40,11 @@ if ('development' == app.get('env')) {
 //session 和 cookie
 app.use(cookieParser());
 app.use(session({
-    //name: 'LiunianNode',
+    name: 'LiunianNode',
     secret: '12345',
     cookie: { maxAge: 60 * 1000 },
-    resave: false,
+    resave: true,
+    rolling: true,
     saveUninitialized: true
 }));
 
@@ -53,4 +54,4 @@ app.use(route(__dirname + '/controller'));
 
 
 
-http.createServer(app).listen(app.get('port'));
+http.createServer(app).listen(app.get('port'),'0.0.0.0');

@@ -43,13 +43,20 @@
         <tbody>
             <% if(data && data.length > 0) {%>
             <% for(var i=0; i<data.length; i++) { %>
+            <% var roleId = data[i].RoleId %>
+                <% var roleName = rolelist.filter(function(item){%>
+                    <%if(item.ID == roleId){%>
+                    <%return true;%>
+                    <%}%>
+                    <%return false;%>
+                <%}) %>
                 <tr target="ID" rel="<%= data[i].ID %>">
                     <td><%= data[i].LoginName %></td>
                     <td><%= data[i].UserName %></td>
                     <td><%= data[i].LatestLoginIP %></td>
                     <td><%= data[i].LoginTimes %></td>
                     <td><%= data[i].IsUse ? "启用" : "禁用" %></td>
-                    <td>XXXXX</td>
+                    <td><%=roleName[0].RoleName %></td>
                     <td><%= formatTime(data[i].LatestLoginTime,"YYYY-MM-DD HH:mm:ss") %></td>
                     <td><%= formatTime(data[i].CreateTime,"YYYY-MM-DD HH:mm:ss") %></td>
                 </tr>

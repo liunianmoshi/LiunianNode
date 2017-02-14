@@ -27,10 +27,18 @@ employeeController.index = function (req,res) {
             'order': 'ID desc'
         });
         if (list) {
+            var roleIds = [];
+            for (var i = 0; i < list.rows.length; i++) {
+                var roleId = list.rows[i].RoleId;
+                if (roleIds.indexOf(roleId) == -1) {
+                    roleIds.push(roleId);
+                }
+            }
+            var rolelist = yield role.findAll({ 'where': { 'ID': roleIds }, 'attributes': ['ID', 'RoleName'], 'raw': true });
             var page = new pagelist(pageNum, list.count, pageSize);
-            res.render('employee/index', { data: list.rows, page: page, userkeyword:userkeyword });
+            res.render('employee/index', { data: list.rows, page: page, userkeyword: userkeyword, rolelist: rolelist });
         } else {
-            res.render('employee/index', { data: [], page: {}, userkeyword: userkeyword });
+            res.render('employee/index', { data: [], page: {}, userkeyword: userkeyword, rolelist:[] });
         }
     }).catch(function (e) {
         console.log(e);

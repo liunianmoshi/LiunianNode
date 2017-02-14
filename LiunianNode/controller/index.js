@@ -4,6 +4,6 @@
  */
 
 exports.index = function (req, res) {
-    
-    res.render('index/index', { title: 'Express123' });
+    var userInfo = req.session.account;
+    res.render('index/index', { UserInfo: userInfo });
 };
