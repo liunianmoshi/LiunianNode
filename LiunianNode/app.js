@@ -18,7 +18,7 @@ var viewhelp = require('./common/viewhelper');
 app.locals.formatTime = viewhelp.formatTime;
 app.locals.dropMenuList = viewhelp.dropMenuList;
 
-global.cache = "123";
+global.linian = {};
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -42,7 +42,7 @@ app.use(cookieParser());
 app.use(session({
     name: 'LiunianNode',
     secret: '12345',
-    cookie: { maxAge: 60 * 1000 },
+    cookie: { maxAge: 180 * 1000 },
     resave: true,
     rolling: true,
     saveUninitialized: true

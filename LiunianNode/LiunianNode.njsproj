@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="common\dbContext.js" />
+    <Compile Include="common\memoryCache.js" />
     <Compile Include="common\tool.js" />
     <Compile Include="controller\auth.js" />
     <Compile Include="controller\employee.js" />
