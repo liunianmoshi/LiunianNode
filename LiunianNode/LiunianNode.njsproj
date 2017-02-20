@@ -80,6 +80,7 @@
     <Compile Include="public\moment.js" />
     <Compile Include="config\route.js" />
     <Compile Include="security\authority.js" />
+    <Compile Include="security\myFilter.js" />
     <Content Include="package.json" />
     <Content Include="public\admin\css\reset.css" />
     <Content Include="public\admin\css\style.css" />
